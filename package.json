@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "npm run clean && tsc",
+    "build": "npm run lint && npm run clean && tsc",
     "test": "npm run test:headless",
     "test:local": "npm run build && protractor dist/protractor/local.config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
-    "webdriver:update": "webdriver-manager update --gecko false"
+    "webdriver:update": "webdriver-manager update --gecko false",
+    "lint": "eslint protractor/**/*.ts test/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,14 @@
   "devDependencies": {
     "@types/jasminewd2": "^2.0.9",
     "@types/node": "^15.12.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
     "jasmine-spec-reporter": "^7.0.0",
     "protractor": "^7.0.0",
     "typescript": "^4.3.4"
