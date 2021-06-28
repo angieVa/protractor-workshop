@@ -1,4 +1,6 @@
-import { $, ElementFinder } from 'protractor';
+import {
+  $, ElementFinder, ExpectedConditions, browser,
+} from 'protractor';
 
 export class ProductListPage {
   private addToCardMenu: ElementFinder;
@@ -8,6 +10,7 @@ export class ProductListPage {
   }
 
   public async goToAddToCardMenu(): Promise<void> {
-    await this.addToCardMenu.click();
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.addToCardMenu), 3000);
+    this.addToCardMenu.click();
   }
 }
