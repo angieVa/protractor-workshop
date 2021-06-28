@@ -13,7 +13,7 @@ export class SignInStep {
     this.addressStep = $('#SubmitLogin > span');
   }
 
-  public async goToAddressStep(email: string, password: string): Promise<void> {
+  public async loginStep(email: string, password: string): Promise<void> {
     await this.email.sendKeys(email);
     await this.password.sendKeys(password);
     await this.addressStep.click();

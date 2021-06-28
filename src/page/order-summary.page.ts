@@ -7,7 +7,7 @@ export class OrderSummary {
     this.orderConfirmationMenu = $('#center_column > div > p > strong');
   }
 
-  public async goToOrderConfirmation(): Promise<string> {
+  public async getConfimantionText(): Promise<string> {
     return this.orderConfirmationMenu.getText();
   }
 }
