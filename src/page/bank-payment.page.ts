@@ -4,7 +4,7 @@ export class BankPayment {
   private orderSummaryMenu: ElementFinder;
 
   constructor() {
-    this.orderSummaryMenu = $('#cart_navigation > button > span');
+    this.orderSummaryMenu = $('#cart_navigation [type="submit"]');
   }
 
   public async goToOrderSummary(): Promise<void> {
