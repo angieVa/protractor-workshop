@@ -11,12 +11,12 @@ describe('Go to Shopping page', () => {
   });
 
   describe('Buy a t-shirt process', () => {
-    const menuContentPage: MenuContentPage = new MenuContentPage();
-    const productListPage: ProductListPage = new ProductListPage();
-    const productAddedModal: ProductAddedModal = new ProductAddedModal();
-    const summaryStep: SummaryStep = new SummaryStep();
-
     beforeAll(async () => {
+      const menuContentPage: MenuContentPage = new MenuContentPage();
+      const productListPage: ProductListPage = new ProductListPage();
+      const productAddedModal: ProductAddedModal = new ProductAddedModal();
+      const summaryStep: SummaryStep = new SummaryStep();
+
       await menuContentPage.goToTShirtMenu();
       await productListPage.goToAddToCardMenu();
       await productAddedModal.goToShoppingCartSummary();
@@ -24,27 +24,28 @@ describe('Go to Shopping page', () => {
     });
 
     describe('Login in the app process', () => {
-      const signInStep: SignInStep = new SignInStep();
-
       beforeAll(async () => {
+        const signInStep: SignInStep = new SignInStep();
+
         await signInStep.login('aperdomobo@gmail.com', 'WorkshopProtractor');
       });
 
       describe('Select address and shipping process', () => {
-        const addressStep: AddressStep = new AddressStep();
-        const shippingStep: ShippingStep = new ShippingStep();
-
         beforeAll(async () => {
+          const addressStep: AddressStep = new AddressStep();
+          const shippingStep: ShippingStep = new ShippingStep();
+
           await addressStep.goToShippingStep();
           await shippingStep.goToPaymentStep();
         });
 
         describe('Bank Payment process', () => {
-          const paymentStep: PaymentStep = new PaymentStep();
-          const bankPayment: BankPayment = new BankPayment();
           const orderSummary: OrderSummary = new OrderSummary();
 
           beforeAll(async () => {
+            const paymentStep: PaymentStep = new PaymentStep();
+            const bankPayment: BankPayment = new BankPayment();
+
             await paymentStep.goToBankPaymentMenu();
             await bankPayment.goToOrderSummary();
           });
