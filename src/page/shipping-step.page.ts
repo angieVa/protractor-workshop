@@ -7,7 +7,7 @@ export class ShippingStep {
 
   constructor() {
     this.termsOfService = $('#cgv');
-    this.paymentStep = $('#form > p > button > span');
+    this.paymentStep = $('#center_column [type="submit"]');
   }
 
   public async goToPaymentStep(): Promise<void> {

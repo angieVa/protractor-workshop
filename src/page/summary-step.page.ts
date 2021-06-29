@@ -4,7 +4,7 @@ export class SummaryStep {
   private signInStep: ElementFinder;
 
   constructor() {
-    this.signInStep = $('.cart_navigation span');
+    this.signInStep = $('#center_column [title="Proceed to checkout"]');
   }
 
   public async goToSignInStep(): Promise<void> {

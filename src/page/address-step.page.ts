@@ -4,7 +4,7 @@ export class AddressStep {
   private shippingStep: ElementFinder;
 
   constructor() {
-    this.shippingStep = $('#center_column > form > p > button > span');
+    this.shippingStep = $('#center_column [type="submit"]');
   }
 
   public async goToShippingStep(): Promise<void> {
