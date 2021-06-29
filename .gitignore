@@ -120,3 +120,6 @@ dist
 
 # Typescript
 dist
+
+#Jasmine Awesome
+reports
