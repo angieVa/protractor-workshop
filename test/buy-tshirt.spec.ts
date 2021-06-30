@@ -18,7 +18,8 @@ describe('Go to Shopping page', () => {
       const summaryStep: SummaryStep = new SummaryStep();
 
       await menuContentPage.goToTShirtMenu();
-      await productListPage.goToAddToCardMenu();
+      await productListPage.selectProduct('Faded Short Sleeve T-shirts');
+      await productListPage.addToCartMenu();
       await productAddedModal.goToShoppingCartSummary();
       await summaryStep.goToSignInStep();
     });
