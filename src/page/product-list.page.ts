@@ -1,16 +1,37 @@
 import {
-  $, ElementFinder, ExpectedConditions, browser,
+  $, $$, ElementArrayFinder, ElementFinder,
+  ExpectedConditions, browser,
 } from 'protractor';
 
 export class ProductListPage {
-  private addToCardMenu: ElementFinder;
+  private addToCardBttn: ElementFinder;
+  private products: ElementArrayFinder;
 
   constructor() {
-    this.addToCardMenu = $('#center_column [title="Add to cart"]');
+    this.products = $$('.product_list.row');
+    this.addToCardBttn = $('#add_to_cart > button');
+
   }
 
-  public async goToAddToCardMenu(): Promise<void> {
-    await browser.wait(ExpectedConditions.elementToBeClickable(this.addToCardMenu), 3000);
-    this.addToCardMenu.click();
+  private findByProduct(productName: string): ElementFinder {
+    return this.products
+        .filter(
+            (product: ElementFinder) =>
+                product
+                    .$('[itemprop="name"]')
+                    .getText()
+                    .then((text : string) => text === productName))
+        .first();
+  }
+
+  public async selectProduct (productName: string): Promise<void> {
+    const product = this.findByProduct(productName);
+    await browser.wait(ExpectedConditions.elementToBeClickable(product.$('img')), 3000);
+    product.$('img').click();
+  }
+
+  public async addToCartMenu (): Promise<void> {
+    await browser.wait(ExpectedConditions.elementToBeClickable(this.addToCardBttn), 3000);
+    this.addToCardBttn.click();
   }
 }
