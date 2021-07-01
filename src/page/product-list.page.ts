@@ -14,9 +14,14 @@ export class ProductListPage {
   }
 
   private findByProduct(productName: string): ElementFinder {
-    return this.products.filter((product: ElementFinder) =>
-      product.$('[itemprop="name"]').getText().
-      then((text : string) => text === productName)).first();
+    return this.products
+        .filter(
+            (product: ElementFinder) =>
+                product
+                    .$('[itemprop="name"]')
+                    .getText()
+                    .then((text : string) => text === productName))
+        .first();
   }
 
   public async selectProduct (productName: string): Promise<void> {
