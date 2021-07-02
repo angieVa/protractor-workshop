@@ -9,7 +9,7 @@ describe('Given a practice form page', () => {
     await browser.get('https://www.tutorialspoint.com/selenium/selenium_automation_practice.htm');
   });
 
-  describe('Fill form', () => {
+  describe('When fill the form', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
 
     beforeAll(async () => {
