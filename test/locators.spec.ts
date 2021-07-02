@@ -31,7 +31,7 @@ describe('Given a practice form page', () => {
       await personalInformationPage.submitForm();
     });
 
-    it('then should have a title', async () => {
+    it('Then should have a title', async () => {
       expect(await personalInformationPage.getTitleText()).toEqual('Selenium - Automation Practice Form');
     });
   });
