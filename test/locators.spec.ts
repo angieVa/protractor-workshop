@@ -3,13 +3,13 @@ import {
   PersonalInformationPage,
 } from '../src/page';
 
-describe('Go to practice form page', () => {
+describe('Given a practice form page', () => {
   beforeAll(async () => {
     browser.waitForAngularEnabled(false);
     await browser.get('https://www.tutorialspoint.com/selenium/selenium_automation_practice.htm');
   });
 
-  describe('Fill form', () => {
+  describe('When fill the form', () => {
     const personalInformationPage: PersonalInformationPage = new PersonalInformationPage();
 
     beforeAll(async () => {
