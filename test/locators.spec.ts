@@ -27,11 +27,13 @@ describe('Given a practice form page', () => {
           'Switch Commands',
           'Wait Commands',
           'WebElement Commands'],
+        picture: './resources/calcifer.jpg',
       });
-      await personalInformationPage.submitForm();
     });
 
-    it('Then should have a title', async () => {
+    it('Then the image should have been uploaded and should have a title', async () => {
+      expect(await personalInformationPage.getProfilePictureValue()).toEqual('calcifer.jpg');
+      await personalInformationPage.submitForm();
       expect(await personalInformationPage.getTitleText()).toEqual('Selenium - Automation Practice Form');
     });
   });

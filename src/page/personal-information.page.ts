@@ -10,7 +10,10 @@ interface PersonalInformation{
   tools: Array<string>;
 	continent: string;
   commands: Array<string>;
+  picture: string;
 }
+
+const {resolve} = require("path");
 
 export class PersonalInformationPage {
   private submitButton: ElementFinder;
@@ -22,8 +25,9 @@ export class PersonalInformationPage {
   private toolsInput: ElementArrayFinder; */
   private continentSelector: ElementFinder;
   private commandsSelector: ElementFinder;
+  private pictureInput: ElementFinder;
 
-  //button y confirmation
+  //button y confirmation BORRAR COMMENTS Y CAMBIAR LOCAL CONFIG
 
   constructor() {
     this.submitButton = element(by.name('submit'));
@@ -35,11 +39,20 @@ export class PersonalInformationPage {
     this.toolsInput = element.all(by.name('tool')); */
     this.continentSelector = element(by.name('continents'));
     this.commandsSelector = element(by.name('selenium_commands'));
+    this.pictureInput = element(by.name('photo'));
   }
 
   private async fillFullName(firstName: string, lastName: string): Promise<void> {
     await this.firstNameInput.sendKeys(firstName);
     await this.lastNameInput.sendKeys(lastName);
+  }
+
+  private async fillProfilePicture(photo: string): Promise<void> {
+    await this.pictureInput.sendKeys(resolve(photo));
+  }
+
+  public async getProfilePictureValue(): Promise<string> {
+    return await (await this.pictureInput.getAttribute('value')).split('\\').pop();
   }
 
   private async fillSex(sex: string): Promise<void> {
@@ -99,6 +112,7 @@ export class PersonalInformationPage {
     await this.fillSex(personalInformation.sex);
     await this.fillExperience(personalInformation.experience);
     await this.fillProfession(personalInformation.profession);
+    await this.fillProfilePicture(personalInformation.picture);
     await this.fillTools(personalInformation.tools);
     await this.fillContinet(personalInformation.continent);
     await this.fillCommands(personalInformation.commands);
