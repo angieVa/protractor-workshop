@@ -21,13 +21,11 @@ export class PersonalInformationPage {
   private lastNameInput: ElementFinder;
   private sexInput: ElementArrayFinder;
   private experienceInput: ElementArrayFinder;
- /*  private professionInput: ElementArrayFinder;
-  private toolsInput: ElementArrayFinder; */
   private continentSelector: ElementFinder;
   private commandsSelector: ElementFinder;
   private pictureInput: ElementFinder;
 
-  //button y confirmation BORRAR COMMENTS Y CAMBIAR LOCAL CONFIG
+
 
   constructor() {
     this.submitButton = element(by.name('submit'));
@@ -35,8 +33,6 @@ export class PersonalInformationPage {
     this.lastNameInput = element(by.name('lastname'));
     this.sexInput = element.all(by.name('sex'));
     this.experienceInput = element.all(by.name('exp'));
-/*     this.professionInput = element.all(by.name('profession'));
-    this.toolsInput = element.all(by.name('tool')); */
     this.continentSelector = element(by.name('continents'));
     this.commandsSelector = element(by.name('selenium_commands'));
     this.pictureInput = element(by.name('photo'));
