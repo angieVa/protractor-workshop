@@ -1,5 +1,7 @@
 import { $, ElementArrayFinder, ElementFinder,
   element, by, browser, ExpectedConditions } from 'protractor';
+import * as remote from 'selenium-webdriver/remote';
+import { existsSync } from 'fs';
 
 interface PersonalInformation{
 	firstName: string;
@@ -25,8 +27,6 @@ export class PersonalInformationPage {
   private commandsSelector: ElementFinder;
   private pictureInput: ElementFinder;
 
-
-
   constructor() {
     this.submitButton = element(by.name('submit'));
     this.firstNameInput = element(by.name('firstname'));
@@ -44,11 +44,16 @@ export class PersonalInformationPage {
   }
 
   private async fillProfilePicture(photo: string): Promise<void> {
-    await this.pictureInput.sendKeys(resolve(photo));
+    const path = resolve(photo);
+    if (existsSync(path)) {
+      await browser.setFileDetector(new remote.FileDetector());
+      await this.pictureInput.sendKeys(path);
+      await browser.setFileDetector(undefined);
+    }
   }
 
   public async getProfilePictureValue(): Promise<string> {
-    return await (await this.pictureInput.getAttribute('value')).split('\\').pop();
+    return await (await this.pictureInput.getAttribute('value')).split('\\').pop().trim();
   }
 
   private async fillSex(sex: string): Promise<void> {
